@@ -25,19 +25,16 @@ public class notTerms{
                 System.out.println("Enter a valid number of questions: ");
             }
         }
-        System.out.println("What chapter would you like to study? Enter a number: ");
+        System.out.println("What chapter would you like to study? Enter a number for any chapter 1-15: ");
         while(numQuestionsAsked< numQuestions){
             boolean answeredCorrectly = true;
             answeredCorrectly = askQuestions(ctd,dtd);
             if(answeredCorrectly){
                 numCorrectAnswers++;
-            }else{
             }
-            // studying = false;
             numQuestionsAsked++;  
             System.out.println("Your score is "+numCorrectAnswers+"/"+numQuestionsAsked);          
-            //need to add score tracking and chapter ask feature
-            //chapter validation            
+        
         }
         System.out.println("Out of "+numQuestions+" questions you correctly answered "+numCorrectAnswers+ " correctly. Thank you for using the Vocabulary Drill App! ");
 
@@ -100,19 +97,7 @@ public class notTerms{
         try{
             Random r = new Random();
             Scanner s = new Scanner(System.in);
-            // String chapter = s.nextLine();
-            // boolean chapterNotValid = true;
-            // while(chapterNotValid){
-            //     if(Integer.parseInt(chapter.trim()) < 16 && Integer.parseInt(chapter)>0){
-            //         chapterNotValid = false;
-            //         System.out.println("hello world");
-            //         break;
-            //     }else{
-            //         System.out.println("Enter a valid chapter number 1-15: ");
-            //         chapter = s.nextLine();
-            //     }
-            // }
-            String chapter = "4";
+            String chapter = s.nextLine();
             ArrayList<String> terms = ctd.get(String.valueOf(chapter));
             int termNum = r.nextInt(terms.size());
             String correct = terms.get(termNum);
@@ -153,6 +138,22 @@ public class notTerms{
         }
         return true;
     }
+    // static String getChapter(){
+    //     String toReturn = "";
+    //     try{
+    //         Scanner s = new Scanner(System.in);
+    //         String input = s.nextLine();
+    //         if(Integer.parseInt(input)<16 && Integer.parseInt(input)>0){
+    //             return input;
+    //         }
+    //         else{
+    //             System.out.println("Enter a valid chapter from 1-15: ");
+    //         }
+    //     }catch(Exception e){
+    //         e.printStackTrace(System.out);
+    //     }
+    //     return toReturn;
+    // }
     static void shuffleArray(String[] ar)  {
     // If running on Java 6 or older, use `new Random()` on RHS here
     Random rnd = ThreadLocalRandom.current();
